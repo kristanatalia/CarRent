@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarRent.Database\CarRent.Database.csproj">
+      <Project>{9a24183f-9df8-4f5f-b18e-1a356d556883}</Project>
+      <Name>CarRent.Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
