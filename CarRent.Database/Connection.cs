@@ -29,7 +29,6 @@ namespace CarRent.Database
                         cmd.Parameters.AddWithValue("@" +param, param);
                     }
                     cmd.CommandTimeout = 0;
-                    cmd.CommandTimeout = 0;
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;
                     da.SelectCommand.CommandTimeout = 0;
@@ -47,10 +46,13 @@ namespace CarRent.Database
                         result.Add(item);
                     }
                 }
-                catch (SqlException) { }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
                 finally
                 {
-                    if (cmd.Connection.State == System.Data.ConnectionState.Open)
+                    if (cmd.Connection.State == ConnectionState.Open)
                         cmd.Connection.Close();
                     cmd.Dispose();
                 }
@@ -69,24 +71,60 @@ namespace CarRent.Database
                 {
                     cmd.Connection.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
-                    foreach (var prop in pModel.GetType().GetProperties())
+                    if(pModel != null)
                     {
-                        cmd.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(pModel));
+                        foreach (var prop in pModel.GetType().GetProperties())
+                        {
+                            cmd.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(pModel));
+                        }
                     }
-                    cmd.CommandTimeout = 0;
                     cmd.CommandTimeout = 0;
                     result = int.Parse(cmd.ExecuteScalar().ToString());
                 }
-                catch (SqlException) { }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
                 finally
                 {
-                    if (cmd.Connection.State == System.Data.ConnectionState.Open)
+                    if (cmd.Connection.State == ConnectionState.Open)
                         cmd.Connection.Close();
                     cmd.Dispose();
                 }
             }
 
             return result;
+        }
+
+        public void ExecuteNonQuery(string pSpName, object pParam)
+        {
+            using (SqlCommand cmd = new SqlCommand(pSpName, new SqlConnection(Connection_Car())))
+            {
+                try
+                {
+                    cmd.Connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (pParam != null)
+                    {
+                        foreach (var prop in pParam.GetType().GetProperties())
+                        {
+                            cmd.Parameters.AddWithValue("@" + prop.Name, prop.GetValue(pParam));
+                        }
+                    }
+                    cmd.CommandTimeout = 0;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                finally
+                {
+                    if (cmd.Connection.State == ConnectionState.Open)
+                        cmd.Connection.Close();
+                    cmd.Dispose();
+                }
+            }
         }
     }
 }

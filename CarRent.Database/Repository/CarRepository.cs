@@ -25,5 +25,10 @@ namespace CarRent.Database.Repository
         {
             return ExecuteQuery("SP_MST_CAR_DELETE", carDeleteDataRequest);
         }
+
+        public void Truncate()
+        {
+            ExecuteNonQuery("SP_MST_CAR_TRUNCATE", null);
+        }
     }
 }

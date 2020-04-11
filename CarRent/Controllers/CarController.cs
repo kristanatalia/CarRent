@@ -19,7 +19,14 @@ namespace CarRent.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            return Ok(carService.GetList());
+            try
+            {
+                return Ok(carService.GetList());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
 
         [HttpPut]
@@ -53,8 +60,15 @@ namespace CarRent.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(CarDeleteRequest carDeleteRequest)
         {
-            carService.Delete(carDeleteRequest);
-            return Ok();
+            try
+            {
+                carService.Delete(carDeleteRequest);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
     }
 }
