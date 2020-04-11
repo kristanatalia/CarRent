@@ -15,23 +15,6 @@ $(document).ready(function () {
     });
 
     $("#btnAddCar").click(function () {
-        if ($("#brand").val() == "")
-        {
-            alert("Brand cannot be empty");
-            return;
-        }
-        if ($("#model").val() == "") {
-            alert("Model cannot be empty");
-            return;
-        }
-        if ($("#prodYear").val() == "") {
-            alert("Production Year cannot be empty");
-            return;
-        }
-        if ($("#price").val() == "") {
-            alert("Rent Price cannot be empty");
-            return;
-        }
         if ($("#idCar").val() == "") {
             var data = {
                 Brand: $("#brand").val(),
@@ -42,6 +25,11 @@ $(document).ready(function () {
             var uri = "/api/car/put";
             ajaxPut(uri, data).then(function () {
                 GetCarData();
+                var myModal = $('#carFormModal');
+                myModal.modal("toggle");
+                alert("Data has been inserted");
+            }).fail(function (err) {
+                alert(err.responseJSON.ExceptionMessage);
             });
         }
         else
@@ -56,6 +44,11 @@ $(document).ready(function () {
             var uri = "/api/car/post";
             ajaxPost(uri, data).then(function () {
                 GetCarData();
+                var myModal = $('#carFormModal');
+                myModal.modal("toggle");
+                alert("Data has been updated");
+            }).fail(function (err) {
+                alert(err.responseJSON.ExceptionMessage);
             });
         }
         
@@ -73,7 +66,7 @@ $(document).ready(function () {
         $('#model', myModal).val(data.Model);
         $('#prodYear', myModal).val(data.ProdYear);
         $('#price', myModal).val(data.Price);
-        myModal.modal({ show: true });
+        myModal.modal("toggle");
         return false;
     });
 
@@ -88,6 +81,7 @@ $(document).ready(function () {
             };
             ajaxDelete(uri, data).then(function () {
                 GetCarData();
+                alert("Data has been deleted");
             });
         }
     });

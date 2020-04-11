@@ -11,19 +11,19 @@ namespace CarRent.Database.Repository
             return ExecuteQuery<CarModel>("SP_MST_CAR_READ", new List<string>());
         }
 
-        public void Insert(CarInsertDataRequest carInsertDataRequest)
+        public int Insert(CarInsertDataRequest carInsertDataRequest)
         {
-            ExecuteQuery("SP_MST_CAR_INSERT", carInsertDataRequest);
+            return ExecuteQuery("SP_MST_CAR_INSERT", carInsertDataRequest);
         }
 
-        public void Update(CarUpdateDataRequest carUpdateDataRequest)
+        public int Update(CarUpdateDataRequest carUpdateDataRequest)
         {
-            ExecuteQuery("SP_MST_CAR_UPDATE", carUpdateDataRequest);
+            return ExecuteQuery("SP_MST_CAR_UPDATE", carUpdateDataRequest);
         }
 
-        public void Delete(CarDeleteDataRequest carDeleteDataRequest)
+        public int Delete(CarDeleteDataRequest carDeleteDataRequest)
         {
-            ExecuteQuery("SP_MST_CAR_DELETE", carDeleteDataRequest);
+            return ExecuteQuery("SP_MST_CAR_DELETE", carDeleteDataRequest);
         }
     }
 }

@@ -23,19 +23,35 @@ namespace CarRent.Core.Services
             return carResponse;
         }
 
-        public void Insert(CarInsertRequest carInsertRequest)
+        public int Insert(CarInsertRequest carInsertRequest)
         {
-            carRepository.Insert(carInsertRequest);
+            Validate(carInsertRequest);
+
+            return carRepository.Insert(carInsertRequest);
         }
 
-        public void Update(CarUpdateRequest carUpdateRequest)
+        public int Update(CarUpdateRequest carUpdateRequest)
         {
-            carRepository.Update(carUpdateRequest);
+            Validate(carUpdateRequest);
+
+            return carRepository.Update(carUpdateRequest);
         }
 
-        public void Delete(CarDeleteRequest carDeleteRequest)
+        public int Delete(CarDeleteRequest carDeleteRequest)
         {
-            carRepository.Delete(carDeleteRequest);
+            return carRepository.Delete(carDeleteRequest);
+        }
+
+        private void Validate(dynamic request)
+        {
+            if (string.IsNullOrEmpty(request.Brand))
+                throw new Exception("Brand is required");
+            if (string.IsNullOrEmpty(request.Model))
+                throw new Exception("Model is required");
+            if (request.ProdYear <= 0)
+                throw new Exception("Production Year is required");
+            if (request.Price <= 0)
+                throw new Exception("Rent Price is required");
         }
     }
 }

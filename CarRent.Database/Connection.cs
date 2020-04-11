@@ -59,8 +59,10 @@ namespace CarRent.Database
             return result;
         }
 
-        public void ExecuteQuery(string pSpName, object pModel)
+        public int ExecuteQuery(string pSpName, object pModel)
         {
+            int result = 0;
+
             using (SqlCommand cmd = new SqlCommand(pSpName, new SqlConnection(Connection_Car())))
             {
                 try
@@ -73,7 +75,7 @@ namespace CarRent.Database
                     }
                     cmd.CommandTimeout = 0;
                     cmd.CommandTimeout = 0;
-                    int result = cmd.ExecuteNonQuery();
+                    result = int.Parse(cmd.ExecuteScalar().ToString());
                 }
                 catch (SqlException) { }
                 finally
@@ -83,6 +85,8 @@ namespace CarRent.Database
                     cmd.Dispose();
                 }
             }
+
+            return result;
         }
     }
 }

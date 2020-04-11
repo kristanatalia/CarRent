@@ -25,15 +25,29 @@ namespace CarRent.Controllers
         [HttpPut]
         public IHttpActionResult Put(CarInsertRequest carInsertRequest)
         {
-            carService.Insert(carInsertRequest);
-            return Ok();
+            try
+            {
+                carService.Insert(carInsertRequest);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
 
         [HttpPost]
         public IHttpActionResult Post(CarUpdateRequest carUpdateRequest)
         {
-            carService.Update(carUpdateRequest);
-            return Ok();
+            try
+            {
+                carService.Update(carUpdateRequest);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
 
         [HttpDelete]
