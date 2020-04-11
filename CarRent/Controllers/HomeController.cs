@@ -14,5 +14,12 @@ namespace CarRent.Controllers
 
             return View();
         }
+
+        public ActionResult Car()
+        {
+            ViewBag.Message = "Car Master";
+
+            return View();
+        }
     }
 }
