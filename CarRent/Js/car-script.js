@@ -93,6 +93,10 @@ $(document).ready(function () {
     });
 });
 
+function FormatCurrency(a) {
+    return (a).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
 function GetCarData() {
     var uri = "/api/car/get";
     
@@ -113,7 +117,12 @@ function GetCarData() {
                 { data: "Brand" },
                 { data: "Model" },
                 { data: "ProdYear" },
-                { data: "Price" },
+                {
+                    data: "Price",
+                    render: function (data) {
+                        return FormatCurrency(data);
+                    }
+                }
             ]
         });
     }).fail(function () {

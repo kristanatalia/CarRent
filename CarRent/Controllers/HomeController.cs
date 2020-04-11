@@ -21,5 +21,12 @@ namespace CarRent.Controllers
 
             return View();
         }
+
+        public ActionResult Calculator()
+        {
+            ViewBag.Message = "Calculator";
+
+            return View();
+        }
     }
 }
