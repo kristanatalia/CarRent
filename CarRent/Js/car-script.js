@@ -15,7 +15,6 @@ $(document).ready(function () {
     });
 
     $("#btnAddCar").click(function () {
-        var uri = "/api/car";
         if ($("#brand").val() == "")
         {
             alert("Brand cannot be empty");
@@ -40,6 +39,7 @@ $(document).ready(function () {
                 ProdYear: $("#prodYear").val(),
                 Price: $("#price").val()
             };
+            var uri = "/api/car/put";
             ajaxPut(uri, data).then(function () {
                 GetCarData();
             });
@@ -53,6 +53,7 @@ $(document).ready(function () {
                 ProdYear: $("#prodYear").val(),
                 Price: $("#price").val()
             };
+            var uri = "/api/car/post";
             ajaxPost(uri, data).then(function () {
                 GetCarData();
             });
@@ -81,7 +82,7 @@ $(document).ready(function () {
         if (confirm("Do you want to delete this row?")) {
             var currentRow = $(this).parents('tr')[0];
             var data = table.row(currentRow).data();
-            var uri = "/api/car";
+            var uri = "/api/car/delete";
             var data = {
                 Id: data.Id
             };
@@ -93,7 +94,7 @@ $(document).ready(function () {
 });
 
 function GetCarData() {
-    var uri = "/api/car";
+    var uri = "/api/car/get";
     
     ajaxGet(uri).then(function (response) {
         console.log(response);

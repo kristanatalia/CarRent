@@ -22,18 +22,21 @@ namespace CarRent.Controllers
             return Ok(carService.GetList());
         }
 
+        [HttpPut]
         public IHttpActionResult Put(CarInsertRequest carInsertRequest)
         {
             carService.Insert(carInsertRequest);
             return Ok();
         }
 
+        [HttpPost]
         public IHttpActionResult Post(CarUpdateRequest carUpdateRequest)
         {
             carService.Update(carUpdateRequest);
             return Ok();
         }
 
+        [HttpDelete]
         public IHttpActionResult Delete(CarDeleteRequest carDeleteRequest)
         {
             carService.Delete(carDeleteRequest);
