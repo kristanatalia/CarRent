@@ -1,10 +1,9 @@
-﻿using System;
+﻿using CarRent.Database.Models;
 
-namespace CarRent.Database.Models
+namespace CarRent.Database.Repository.Car.Models
 {
-    public class CarUpdateDataRequest
+    public class CarInsertDataRequest : BaseInsertDataRequest
     {
-        public Int64 Id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
         public int ProdYear { get; set; }

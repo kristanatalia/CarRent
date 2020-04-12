@@ -47,13 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
-    <Compile Include="Models\CarDeleteDataRequest.cs" />
-    <Compile Include="Models\CarInsertDataRequest.cs" />
-    <Compile Include="Models\CarModel.cs" />
-    <Compile Include="Models\CarUpdateDataRequest.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Models\Base\BaseDeleteDataRequest.cs" />
+    <Compile Include="Models\Base\BaseInsertDataRequest.cs" />
+    <Compile Include="Repository\Car\Models\CarInsertDataRequest.cs" />
+    <Compile Include="Models\Base\BaseModel.cs" />
+    <Compile Include="Repository\Car\Models\CarModel.cs" />
+    <Compile Include="Models\Base\BaseUpdateDataRequest.cs" />
+    <Compile Include="Repository\Car\Models\CarUpdateDataRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\CarRepository.cs" />
+    <Compile Include="Repository\Car\CarRepository.cs" />
+    <Compile Include="Repository\IMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

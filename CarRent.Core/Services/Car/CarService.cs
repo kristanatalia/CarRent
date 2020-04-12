@@ -1,20 +1,19 @@
-﻿using CarRent.Core.Models;
-using CarRent.Database.Models;
-using CarRent.Database.Repository;
+﻿using CarRent.Core.Services.Car.Models;
+using CarRent.Database.Repository.Car;
+using CarRent.Database.Repository.Car.Models;
 using System;
 using System.Collections.Generic;
 
-namespace CarRent.Core.Services
+namespace CarRent.Core.Services.Car
 {
     public class CarService
     {
-        CarRepository carRepository = new CarRepository();
+        private CarRepository carRepository = new CarRepository();
+
         public List<CarResponse> GetList()
         {
-            List<CarModel> carModel = carRepository.GetData();
-
+            List<CarModel> carModel = carRepository.GetData<CarModel>();
             List<CarResponse> carResponse = new List<CarResponse>();
-
             foreach (var item in carModel)
             {
                 carResponse.Add(new CarResponse() { Id = item.Id, Brand = item.Brand, Model = item.Model, Price = item.Price, ProdYear = item.ProdYear });
@@ -26,14 +25,12 @@ namespace CarRent.Core.Services
         public int Insert(CarInsertRequest carInsertRequest)
         {
             Validate(carInsertRequest);
-
             return carRepository.Insert(carInsertRequest);
         }
 
         public int Update(CarUpdateRequest carUpdateRequest)
         {
             Validate(carUpdateRequest);
-
             return carRepository.Update(carUpdateRequest);
         }
 

@@ -1,4 +1,3 @@
-// Call the dataTables jQuery plugin
 var table = null;
 $(document).ready(function () {
     GetCarData();
@@ -15,13 +14,14 @@ $(document).ready(function () {
     });
 
     $("#btnAddCar").click(function () {
+        var data = {
+            Brand: $("#brand").val(),
+            Model: $("#model").val(),
+            ProdYear: $("#prodYear").val(),
+            Price: $("#price").val()
+        };
+
         if ($("#idCar").val() == "") {
-            var data = {
-                Brand: $("#brand").val(),
-                Model: $("#model").val(),
-                ProdYear: $("#prodYear").val(),
-                Price: $("#price").val()
-            };
             var uri = "/api/car/put";
             ajaxPut(uri, data).then(function () {
                 GetCarData();
@@ -34,13 +34,7 @@ $(document).ready(function () {
         }
         else
         {
-            var data = {
-                Id: $("#idCar").val(),
-                Brand: $("#brand").val(),
-                Model: $("#model").val(),
-                ProdYear: $("#prodYear").val(),
-                Price: $("#price").val()
-            };
+            data.Id = $("#idCar").val();
             var uri = "/api/car/post";
             ajaxPost(uri, data).then(function () {
                 GetCarData();
@@ -95,7 +89,6 @@ function GetCarData() {
     var uri = "/api/car/get";
     
     ajaxGet(uri).then(function (response) {
-        console.log(response);
         table = $('#carTable').DataTable({
             data: response,
             destroy: true,

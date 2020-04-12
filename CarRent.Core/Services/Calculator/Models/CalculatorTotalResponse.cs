@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CarRent.Core.Models
+namespace CarRent.Core.Services.Calculator.Models
 {
     public class CalculatorTotalResponse
     {

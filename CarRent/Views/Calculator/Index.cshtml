@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Car Rent Calculator";
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="card-body">
+    <form id="carForm">
+        <div class="form-group">
+            <label for="car">Car</label>
+            <select class="form-control" id="car"></select>
+        </div>
+        <div class="form-group">
+            <label for="days">Days</label>
+            <input type="number" class="form-control" id="days" min="1" value="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnAddCar">Add Car</button>
+        <button class="btn btn-primary" id="btnClear">Clear Table</button>
+    </form>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="carTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th width="5%">Id</th>
+                    <th width="5%">Car Id</th>
+                    <th width="15%">Car</th>
+                    <th width="5%">Prod Year</th>
+                    <th>Rent Price</th>
+                    <th>Days</th>
+                    <th width="15%">Price Before Discount</th>
+                    <th>Discount</th>
+                    <th width="15%">Price After Discount</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th colspan="9" class="text-right">Sub Total</th>
+                    <td class="subTotal"></td>
+                </tr>
+                <tr>
+                    <th colspan="9" class="text-right">Discount</th>
+                    <td class="discountTotal"></td>
+                </tr>
+                <tr>
+                    <th colspan="9" class="text-right">Grand Total</th>
+                    <td class="grandTotal"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="form-row text-center">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" id="btnCalculate">Calculate</button>
+        </div>
+    </div>
+    
+</div>
+
+
+@section scripts {
+    <script src="~/Js/calculator-script.js"></script>
+}

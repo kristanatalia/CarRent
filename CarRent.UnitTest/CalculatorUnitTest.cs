@@ -1,8 +1,8 @@
-﻿using System;
+﻿using CarRent.Core.Services.Calculator;
+using CarRent.Core.Services.Calculator.Models;
+using CarRent.Core.Services.Car;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CarRent.Core.Services;
 using System.Collections.Generic;
-using CarRent.Core.Models;
 
 namespace CarRent.UnitTest
 {

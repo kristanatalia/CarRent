@@ -1,5 +1,5 @@
-﻿using CarRent.Core.Models;
-using CarRent.Core.Services;
+﻿using CarRent.Core.Services.Car;
+using CarRent.Core.Services.Car.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;

@@ -2,7 +2,7 @@
 
 namespace CarRent.Database.Models
 {
-    public class CarDeleteDataRequest
+    public class BaseDeleteDataRequest
     {
         public Int64 Id { get; set; }
     }

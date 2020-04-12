@@ -46,17 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CalculatorRequest.cs" />
-    <Compile Include="Models\CalculatorResponse.cs" />
-    <Compile Include="Models\CalculatorTotalResponse.cs" />
-    <Compile Include="Models\CarDeleteRequest.cs" />
-    <Compile Include="Models\CarInsertRequest.cs" />
-    <Compile Include="Models\CarResponse.cs" />
-    <Compile Include="Models\CarUpdateRequest.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Services\Calculator\Models\CalculatorRequest.cs" />
+    <Compile Include="Services\Calculator\Models\CalculatorResponse.cs" />
+    <Compile Include="Services\Calculator\Models\CalculatorTotalResponse.cs" />
+    <Compile Include="Services\Car\Models\CarDeleteRequest.cs" />
+    <Compile Include="Services\Car\Models\CarInsertRequest.cs" />
+    <Compile Include="Services\Car\Models\CarResponse.cs" />
+    <Compile Include="Services\Car\Models\CarUpdateRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CalculatorService.cs" />
-    <Compile Include="Services\CarService.cs" />
+    <Compile Include="Services\Calculator\CalculatorService.cs" />
+    <Compile Include="Services\Car\CarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

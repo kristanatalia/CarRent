@@ -1,17 +1,18 @@
-﻿using CarRent.Core.Models;
-using CarRent.Database.Models;
-using CarRent.Database.Repository;
+﻿using CarRent.Core.Services.Calculator.Models;
+using CarRent.Database.Repository.Car;
+using CarRent.Database.Repository.Car.Models;
 using System;
 using System.Collections.Generic;
 
-namespace CarRent.Core.Services
+namespace CarRent.Core.Services.Calculator
 {
     public class CalculatorService
     {
-        CarRepository carRepository = new CarRepository();
+        private CarRepository carRepository = new CarRepository();
+
         public CalculatorTotalResponse Calculate(List<CalculatorRequest> calculatorRequests)
         {
-            List<CarModel> carModel = carRepository.GetData();
+            List<CarModel> carModel = carRepository.GetData<CarModel>();
             CalculatorTotalResponse calculatorTotalResponse = new CalculatorTotalResponse();
             List<CalculatorResponse> calculatorResponse = new List<CalculatorResponse>();
             int index = 0;

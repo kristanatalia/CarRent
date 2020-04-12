@@ -1,6 +1,9 @@
-﻿namespace CarRent.Database.Models
+﻿using CarRent.Database.Models;
+using System;
+
+namespace CarRent.Database.Repository.Car.Models
 {
-    public class CarInsertDataRequest
+    public class CarUpdateDataRequest : BaseUpdateDataRequest
     {
         public string Brand { get; set; }
         public string Model { get; set; }

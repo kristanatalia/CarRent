@@ -1,18 +1,14 @@
-﻿using CarRent.Core.Models;
-using CarRent.Core.Services;
-using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Mvc;
 
 namespace CarRent.Controllers
 {
-    public class CalculatorController : ApiController
+    public class CalculatorController : Controller
     {
-        CalculatorService calculatorService = new CalculatorService();
-
-        [HttpPost]
-        public IHttpActionResult Calculate(List<CalculatorRequest> calculatorRequests)
+        public ActionResult Index()
         {
-            return Ok(calculatorService.Calculate(calculatorRequests));
+            ViewBag.Message = "Calculator";
+
+            return View();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CarRent.Core.Models
+namespace CarRent.Core.Services.Calculator.Models
 {
     public class CalculatorResponse
     {
